@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import Features from "./Features";
+import FeatureItem from "./FeatureItem";
 import Summary from "./Summary";
+import FeatureHash from "./FeatureHash";
+import SummaryOptions from "./summaryOptions";
 
 class App extends Component {
   state = {
@@ -34,14 +36,54 @@ class App extends Component {
   };
 
   render() {
+       return (
+          <FeatureItem 
+            itemHash={itemHash}
+            item={item}
+            feature={feature}
+            selected={this.state.selected}
+            updateFeature={this.updateFeature}
+          />
+        );
+      });
+
+      return (
+        <FeatureHash 
+        featureHash={featureHash}
+        options={options}
+        feature={feature}
+        />
+      );
+    });
+
+    const summary = Object.keys(this.state.selected).map((feature, idx) => {
+      const featureHash = feature + '-' + idx;
+      const selectedOption = this.state.selected[feature];
+
+      return (
+       <SummaryOptions 
+       feature={feature}
+       featureHash={featureHash}
+       selectedOption={selectedOption} />
+      );
+    });
+
+    const total = Object.keys(this.state.selected).reduce(
+      (acc, curr) => acc + this.state.selected[curr].cost,
+      0
+    );
+
     return (
       <div className="App">
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
-          <Summary />
-          <Features />
+          <Form 
+          feature={features}
+          />
+          <Summary summary={summary} total={total}
+           />
         </main>
       </div>
     );
