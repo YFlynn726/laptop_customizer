@@ -3,7 +3,7 @@ import "./App.css";
 import FeatureItem from "./FeatureItem";
 import Summary from "./Summary";
 import FeatureHash from "./FeatureHash";
-import SummaryOptions from "./summaryOptions";
+import SummaryOptions from "./SummaryOptions";
 import Form from "./Form";
 
 class App extends Component {

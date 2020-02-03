@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class FeatureHash extends Component {
-  state = {};
   render() {
     return (
       <fieldset className="feature" key={this.props.featureHash}>
