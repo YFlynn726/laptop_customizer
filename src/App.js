@@ -4,6 +4,7 @@ import FeatureItem from "./FeatureItem";
 import Summary from "./Summary";
 import FeatureHash from "./FeatureHash";
 import SummaryOptions from "./summaryOptions";
+import Form from "./Form";
 
 class App extends Component {
   state = {
@@ -34,56 +35,32 @@ class App extends Component {
       selected
     });
   };
-
   render() {
-       return (
-          <FeatureItem 
-            itemHash={itemHash}
-            item={item}
-            feature={feature}
-            selected={this.state.selected}
-            updateFeature={this.updateFeature}
-          />
-        );
-      });
-
-      return (
-        <FeatureHash 
-        featureHash={featureHash}
-        options={options}
-        feature={feature}
-        />
-      );
-    });
-
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-       <SummaryOptions 
-       feature={feature}
-       featureHash={featureHash}
-       selectedOption={selectedOption} />
-      );
-    });
-
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-
     return (
       <div className="App">
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
-          <Form 
-          feature={features}
+          <Form feature={this.props.features} />
+          <Summary summary={this.props.summary} total={this.props.total} />
+          <FeatureItem
+            itemHash={this.props.itemHash}
+            item={this.props.item}
+            feature={this.props.feature}
+            selected={this.state.selected}
+            updateFeature={this.props.updateFeature}
           />
-          <Summary summary={summary} total={total}
-           />
+          <FeatureHash
+            featureHash={this.props.featureHash}
+            options={this.props.options}
+            feature={this.props.feature}
+          />
+          <SummaryOptions
+            feature={this.props.feature}
+            featureHash={this.props.featureHash}
+            selectedOption={this.props.selectedOption}
+          />
         </main>
       </div>
     );

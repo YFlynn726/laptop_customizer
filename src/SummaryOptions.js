@@ -6,8 +6,12 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 });
 
 class SummaryOptions extends Component {
-  state = {};
   render() {
+      const summary = Object.keys(this.state.selected).map((feature, idx) => {
+        const featureHash = feature + "-" + idx;
+        const selectedOption = this.state.selected[feature];
+    
+
     return (
       <div className="summary__option" key={this.props.featureHash}>
         <div className="summary__option__label">{this.props.feature} </div>
@@ -19,7 +23,8 @@ class SummaryOptions extends Component {
         </div>
       </div>
     );
-  }
 }
+}
+
 
 export default SummaryOptions;
