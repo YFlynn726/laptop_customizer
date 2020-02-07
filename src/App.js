@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import Summary from "./Main Summary/Summary";
+import Total from "./Main Summary/Total";
 import "./App.css";
-import FeatureItem from "./FeatureItem";
-import Summary from "./Summary";
-import FeatureHash from "./FeatureHash";
-import SummaryOptions from "./SummaryOptions";
-import Form from "./Form";
+import MainForm from "./Main Form/MainForm";
+import MainSummary from "./Main Summary/MainSummary";
+import Header from "./Header";
+
+const USCurrencyFormat = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
 
 class App extends Component {
   state = {
@@ -28,38 +33,16 @@ class App extends Component {
     }
   };
 
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  };
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
-          <Form feature={this.props.features} />
-          <Summary summary={this.props.summary} total={this.props.total} />
-          <FeatureItem
-            itemHash={this.props.itemHash}
-            item={this.props.item}
-            feature={this.props.feature}
-            selected={this.state.selected}
-            updateFeature={this.props.updateFeature}
-          />
-          <FeatureHash
-            featureHash={this.props.featureHash}
-            options={this.props.options}
-            feature={this.props.feature}
-          />
-          <SummaryOptions
-            feature={this.props.feature}
-            featureHash={this.props.featureHash}
-            selectedOption={this.props.selectedOption}
+          <MainForm features={this.props.features} />
+          <MainSummary
+            USCurrencyFormat={USCurrencyFormat.format}
+            Summary={Summary}
+            Total={Total}
           />
         </main>
       </div>
