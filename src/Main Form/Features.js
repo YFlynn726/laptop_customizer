@@ -14,8 +14,8 @@ class Features extends Component {
           </legend>
           <Options
             //what do i call here?
-            feature={this.props.features[feature]}
-            selected={this.props.selected[feature].name}
+            feature={this.props.features}
+            selected={this.props.selected}
             updateFeature={this.props.updateFeature}
             USCurrency={this.props.USCurrencyFormat}
             slugify={this.props.slugify}

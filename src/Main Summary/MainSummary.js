@@ -13,8 +13,8 @@ class mainSummary extends Component {
           feature={this.props.feature}
           updateFeature={this.props.updateFeature}
           USCurrency={this.props.USCurrencyFormat}
-          selectedOptionName={this.props.selectedOption.name}
-          selectedOptionCost={this.props.selectedOption.cost}
+          selectedOptionName={this.props.selectedOption}
+          selectedOptionCost={this.props.selectedOption}
         />
         <Total />
       </section>
