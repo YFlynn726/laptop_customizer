@@ -7,16 +7,8 @@ class mainSummary extends Component {
     return (
       <section className="main__summary">
         <h2>Your cart</h2>
-        <Summary
-          featureHash={this.props.featureHash}
-          selected={this.props.selected}
-          feature={this.props.feature}
-          updateFeature={this.props.updateFeature}
-          USCurrency={this.props.USCurrencyFormat}
-          selectedOptionName={this.props.selectedOption}
-          selectedOptionCost={this.props.selectedOption}
-        />
-        <Total />
+        <Summary selected={this.props.selected} />
+        <Total selected={this.props.selected} />
       </section>
     );
   }

@@ -6,13 +6,6 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 });
 
 class Summary extends Component {
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.props.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  };
   render() {
     const summary = Object.keys(this.props.selected).map((feature, idx) => {
       const featureHash = feature + "-" + idx;
@@ -28,7 +21,7 @@ class Summary extends Component {
         </div>
       );
     });
-    return { summary };
+    return <div>{summary}</div>;
   }
 }
 
